@@ -1,0 +1,14 @@
+<launch>
+	<arg name="Color_Image_Topic" value="/usb_cam_node/image/raw" />
+
+	<node name="etri_recognition_node" pkg="etri_recognition_cpp" type="etri_recognition_node" respawn="false" output="screen">
+        <!--
+            Output Topic: recognitionResult
+        -->
+        <remap from="Color_Image" to="$(arg Color_Image_Topic)" />
+	</node>
+
+    <!--
+    <node name="republish" type="republish" pkg="image_transport" output="screen" args="compressed in:=/usb_cam_node/imageraw _image_transport:=compressed raw out:=/usb_cam_node/image/raw" />
+    -->
+</launch>

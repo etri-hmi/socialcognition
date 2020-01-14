@@ -1,0 +1,13 @@
+<launch>
+  	<!-- declare arg to be passed in -->
+	<arg name="Color_Image_Topic" value="/webcam/image_raw"/>
+
+	<node name="etri_recognition_node" pkg="etri_recognition_py" type="etri_recognition_node.py" respawn="false" output="screen">
+        <!--
+            Output Topic: recognitionResult
+        -->
+        <remap from="Color_Image" to="$(arg Color_Image_Topic)" />
+	</node>
+
+    <include file="$(find video_stream_opencv)/launch/webcam.launch"/>
+</launch>
